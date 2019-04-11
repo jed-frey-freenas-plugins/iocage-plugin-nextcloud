@@ -69,6 +69,16 @@ chmod -R o-rwx /usr/local/www/nextcloud
 #updater needs this
 chown -R www:www /usr/local/www/nextcloud
 
+
+# SSL
+HOST=`tail -n1 /etc/hosts | cut -f2`
+
+# openssl
+openssl genrsa -out /etc/ssl/nginx-selfsigned.key 2048
+openssl req -new -key /etc/ssl/nginx-selfsigned.key -out /etc/ssl/nginx-selfsigned.csr -subj "/C=GB/ST=London/L=London/O=FreeNAS Jail/OU=FreeNAS Jail/CN=${HOST}.lan"
+openssl req -new -days 3650 -x509 -key /etc/ssl/nginx-selfsigned.key -out /etc/ssl/nginx-selfsigned.pem -subj "/C=GB/ST=London/L=London/O=FreeNAS Jail/OU=FreeNAS Jail/CN=${HOST}.lan"
+
+
 #restart the services to make sure we have pick up the new permission
 service php-fpm restart 2>/dev/null
 #nginx restarts to fast while php is not fully started yet
