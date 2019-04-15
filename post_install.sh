@@ -23,7 +23,7 @@ service nginx start 2>/dev/null
 service php-fpm start 2>/dev/null
 service mysql-server start 2>/dev/null
 
-#https://docs.nextcloud.com/server/13/admin_manual/installation/installation_wizard.html do not use the same name for user and db
+# https://docs.nextcloud.com/server/13/admin_manual/installation/installation_wizard.html do not use the same name for user and db
 USER="dbadmin"
 DB="nextcloud"
 
@@ -73,11 +73,9 @@ chown -R www:www /usr/local/www/nextcloud
 # SSL
 HOST=`tail -n1 /etc/hosts | cut -f2`
 
-# openssl
-openssl genrsa -out /etc/ssl/nginx-selfsigned.key 2048
-openssl req -new -key /etc/ssl/nginx-selfsigned.key -out /etc/ssl/nginx-selfsigned.csr -subj "/C=GB/ST=London/L=London/O=FreeNAS Jail/OU=FreeNAS Jail/CN=${HOST}.lan"
-openssl req -new -days 3650 -x509 -key /etc/ssl/nginx-selfsigned.key -out /etc/ssl/nginx-selfsigned.pem -subj "/C=GB/ST=London/L=London/O=FreeNAS Jail/OU=FreeNAS Jail/CN=${HOST}.lan"
-
+# Generate SSL Certs
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/ssl/nginx-selfsigned.key -out /etc/ssl/nginx-selfsigned.crt -subj "/C=GB/ST=London/L=London/O=FreeNAS Jail/OU=FreeNAS Jail/CN=${HOST}.local"
+openssl dhparam -out /etc/ssl/dhparam.pem 4096
 
 #restart the services to make sure we have pick up the new permission
 service php-fpm restart 2>/dev/null
