@@ -1,3 +1,0 @@
-#!/bin/sh
-
-/usr/local/sbin/mdnsd -d epair0b
