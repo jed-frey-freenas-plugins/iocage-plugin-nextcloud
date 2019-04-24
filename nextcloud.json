@@ -1,0 +1,30 @@
+{
+   "name":"Nextcloud",
+   "release":"11.2-RELEASE",
+   "artifact":"https://github.com/jed-frey-freenas-plugins/iocage-plugin-nextcloud.git",
+   "pkgs":[
+      "www/nextcloud",
+      "www/nginx",
+      "databases/mysql56-server",
+      "openmdns"
+   ],
+   "packagesite":"http://pkg.FreeBSD.org/${ABI}/quarterly",
+   "fingerprints":{
+      "iocage-plugins":[
+         {
+            "function":"sha256",
+            "fingerprint":"226efd3a126fb86e71d60a37353d17f57af816d1c7ecad0623c21f0bf73eb0c7"
+         }
+      ]
+   },
+   "official":false,
+   "properties":{
+      "boot":"on",
+      "vnet":"on",
+      "dhcp":"on",
+      "bpf":"yes",
+      "allow_raw_sockets":"1",
+      "allow_mount_tmpfs":"1"
+   },
+   "plugin_schema":"2"
+}
