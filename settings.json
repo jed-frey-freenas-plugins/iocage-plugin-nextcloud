@@ -1,25 +1,25 @@
 {
-	"servicerestart":"service nginx restart",
-	"serviceget": "/usr/local/bin/pluginget",
-	"serviceset": "/usr/local/bin/pluginset",
-	"options": {
-		"dbname": {
-			"type": "string",
-			"name": "Database Name",
-			"description": "Database to use for NextCloud setup",
-			"readonly": true
-		},
-		"dbuser": {
-			"type": "string",
-			"name": "Database Username",
-			"description": "Username to use for NextCloud Database setup",
-			"readonly": true
-		},
-		"dbpassword": {
-			"type": "string",
-			"name": "Database Password",
-			"description": "Password to use for NextCloud Database setup",
-			"readonly": true
-		}
-	}
+   "options" : {
+      "dbuser" : {
+         "type" : "string",
+         "description" : "Username to use for NextCloud Database setup",
+         "readonly" : true,
+         "name" : "Database Username"
+      },
+      "dbname" : {
+         "readonly" : true,
+         "name" : "Database Name",
+         "description" : "Database to use for NextCloud setup",
+         "type" : "string"
+      },
+      "dbpassword" : {
+         "type" : "string",
+         "description" : "Password to use for NextCloud Database setup",
+         "name" : "Database Password",
+         "readonly" : true
+      }
+   },
+   "serviceset" : "/usr/local/bin/pluginset",
+   "serviceget" : "/usr/local/bin/pluginget",
+   "servicerestart" : "service nginx restart"
 }
