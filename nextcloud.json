@@ -15,7 +15,8 @@
       "www/nextcloud",
       "www/nginx",
       "databases/mysql56-server",
-      "openmdns"
+      "openmdns",
+      "redis"
    ],
    "release" : "11.2-RELEASE",
    "official" : false,
