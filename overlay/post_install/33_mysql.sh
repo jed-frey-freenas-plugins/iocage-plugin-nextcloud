@@ -3,6 +3,8 @@
 # Enable the service & disable networking.
 echo "- Enable MySQL"
 sysrc -f /etc/rc.conf mysql_enable="YES"
+sysrc -f /etc/rc.conf mysql_args="--skip-networking"
+
 service mysql-server start 2>/dev/null
 
 # Give it a second.

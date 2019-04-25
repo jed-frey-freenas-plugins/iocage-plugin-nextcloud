@@ -16,5 +16,7 @@ sed -i '' 's/.*opcache.revalidate_freq=.*/opcache.revalidate_freq=1/' /usr/local
 # 2048M limit: Go big or go home.
 sed -i '' 's/.*memory_limit.*/memory_limit=2048M/' /usr/local/etc/php.ini
 
+rm /usr/local/etc/php-fpm.d/www.conf*
+
 service php-fpm start 2>/dev/null
 sleep 5

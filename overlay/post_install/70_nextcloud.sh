@@ -18,3 +18,6 @@ chmod -R o-rwx /usr/local/www/nextcloud
 
 #updater needs this
 chown -R www:www /usr/local/www/nextcloud
+
+# Is this php-fpm or nextcloud?
+sed -i '' "s/MAX_SPARE_SERVERS/`sysctl -n kern.smp.cpus`/g" /usr/local/etc/php-fpm.d/nextcloud.conf
