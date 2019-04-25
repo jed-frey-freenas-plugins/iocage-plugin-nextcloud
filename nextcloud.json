@@ -1,8 +1,4 @@
 {
-   "name" : "Nextcloud",
-   "packagesite" : "http://pkg.FreeBSD.org/${ABI}/quarterly",
-   "artifact" : "https://github.com/jed-frey-freenas-plugins/iocage-plugin-nextcloud.git",
-   "plugin_schema" : "2",
    "fingerprints" : {
       "plugin-default" : [
          {
@@ -10,6 +6,15 @@
             "function" : "sha256"
          }
       ]
+   },
+   "plugin_schema" : "2",
+   "properties" : {
+      "bpf" : "yes",
+      "allow_mount_tmpfs" : "1",
+      "boot" : "on",
+      "vnet" : "on",
+      "allow_raw_sockets" : "1",
+      "dhcp" : "on"
    },
    "pkgs" : [
       "nextcloud-php73",
@@ -21,14 +26,7 @@
    ],
    "release" : "11.2-RELEASE",
    "official" : false,
-   "properties" : {
-      "allow_raw_sockets" : "1",
-      "dhcp" : "on",
-      "bpf" : "yes",
-      "vnet" : "on",
-      "allow_mount_tmpfs" : "1",
-      "boot" : "on"
-   }
+   "artifact" : "https://github.com/jed-frey-freenas-plugins/iocage-plugin-nextcloud.git",
+   "name" : "Nextcloud",
+   "packagesite" : "http://pkg.FreeBSD.org/${ABI}/quarterly"
 }
-
-
