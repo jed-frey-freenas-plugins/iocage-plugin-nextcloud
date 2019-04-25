@@ -28,7 +28,6 @@ $CONFIG = array (
 
 // Log-files belong in the appropriate location
   'logfile' => '/var/log/nextcloud/nextcloud.log',
-
 // Enable user caching when option is enabled
   'memcache.local' => '\\OC\\Memcache\\Redis',
   'memcache.locking' => '\\OC\\Memcache\\Redis',
