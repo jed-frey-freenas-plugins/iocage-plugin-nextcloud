@@ -8,26 +8,23 @@ cp ${CFG}.sample ${CFG}
 echo "- Enable MySQL"
 sysrc -f /etc/rc.conf mysql_enable="YES"
 sysrc -f /etc/rc.conf mysql_args="--skip-networking"
-# Start the server
-service mysql-server start 2>/dev/null
-
-# Give it a second.
-sleep 5
 
 # Start the service
 echo "- Start MySQL"
 service mysql-server start
+# Give it a second.
+sleep 5
 
-#https://docs.nextcloud.com/server/13/admin_manual/installation/installation_wizard.html do not use the same name for user and db
+## Nextcloud Config
+# https://docs.nextcloud.com/server/13/admin_manual/installation/installation_wizard.html do not use the same name for user and db
 USER="dbadmin"
 DB="nextcloud"
-
-# Save the config values
-echo "$DB" > /root/dbname
-echo "$USER" > /root/dbuser
 export LC_ALL=C
-cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1 > /root/dbpassword
-PASS=`cat /root/dbpassword`
+PASS=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 20 | head -n 1`
+# Save the config values
+echo "dbname:${DB}" > /root/plugin_config
+echo "dbuser:${USER}" > /root/plugin_config
+echo "dbpass:${PASS}" > /root/plugin_config
 
 # Configure mysql
 mysql -u root <<-EOF
