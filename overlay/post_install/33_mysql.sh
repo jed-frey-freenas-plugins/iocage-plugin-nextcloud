@@ -1,10 +1,14 @@
 #!/bin/sh
 
+# Copy the config.
+CFG=/usr/local/etc/mysql/my.cnf
+cp ${CFG}.sample ${CFG}
+
 # Enable the service & disable networking.
 echo "- Enable MySQL"
 sysrc -f /etc/rc.conf mysql_enable="YES"
 sysrc -f /etc/rc.conf mysql_args="--skip-networking"
-
+# Start the server
 service mysql-server start 2>/dev/null
 
 # Give it a second.
