@@ -12,15 +12,8 @@
       ]
    },
    "pkgs" : [
-   "nextcloud-calendar-php73",
-"nextcloud-contacts-php73",
-"nextcloud-mail-php73",
-"nextcloud-notes-php73",
-"nextcloud-passman-php73",
-"nextcloud-php73",
-"nextcloud-tasks-php73",
-"nextcloud-twofactor_totp-php73",
-"nextcloud-twofactor_u2f-php73",
+      "nextcloud-php73",
+      "php73-pecl-redis",
       "www/nginx",
       "databases/mysql56-server",
       "openmdns",
