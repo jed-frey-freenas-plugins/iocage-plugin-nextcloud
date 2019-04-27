@@ -18,5 +18,8 @@ sed -i '' 's/.*memory_limit.*/memory_limit=2048M/' /usr/local/etc/php.ini
 
 rm /usr/local/etc/php-fpm.d/www.conf*
 
-service php-fpm start 2>/dev/null
+service php-fpm start
 sleep 5
+service php-fpm start            
+sleep 5
+

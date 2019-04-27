@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Copy the config.
-CFG=/usr/local/etc/mysql/my.cnf
-cp ${CFG}.sample ${CFG}
-
 # Enable the service & disable networking.
 echo "- Enable MySQL"
 sysrc -f /etc/rc.conf mysql_enable="YES"
@@ -23,8 +19,8 @@ export LC_ALL=C
 PASS=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 20 | head -n 1`
 # Save the config values
 echo "dbname:${DB}" > /root/plugin_config
-echo "dbuser:${USER}" > /root/plugin_config
-echo "dbpass:${PASS}" > /root/plugin_config
+echo "dbuser:${USER}" >> /root/plugin_config
+echo "dbpass:${PASS}" >> /root/plugin_config
 
 # Configure mysql
 mysql -u root <<-EOF
