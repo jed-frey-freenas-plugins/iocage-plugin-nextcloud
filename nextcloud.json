@@ -20,7 +20,7 @@
       "nextcloud-php73",
       "php73-pecl-redis",
       "www/nginx",
-      "databases/mysql56-server",
+      "databases/mysql57-server",
       "openmdns",
       "redis"
    ],

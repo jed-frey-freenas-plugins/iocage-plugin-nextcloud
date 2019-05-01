@@ -1,4 +1,5 @@
 #!/bin/sh
+
 # Start the service
 service mysql-server start
 
