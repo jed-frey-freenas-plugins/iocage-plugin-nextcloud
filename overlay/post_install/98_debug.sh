@@ -1,7 +1,7 @@
 #/bin/sh
-echo "~~~~~~~~~ Service ~~~~~~~~~"
+echo "~~~~~~~~~ Services ~~~~~~~~~"
 service -e
 echo "~~~~~~~~~ Running Processes ~~~~~~~~~"
 ps auxww
-echo "~~~~~~~~~ Listening Ports ~~~~~~~~~"
+echo "~~~~~~~~~ Listening Sockets ~~~~~~~~~"
 sockstat -l

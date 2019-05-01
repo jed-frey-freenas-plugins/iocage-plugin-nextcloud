@@ -1,9 +1,10 @@
 #!/bin/sh
 
 # Start the service
+# PHP FPM has ... issues.
+while ["`pgrep -x mysqld`" == ""]
 service mysql-server start
-
-sleep 5
+end
 
 # MySQL Configuration
 # https://docs.nextcloud.com/server/13/admin_manual/installation/installation_wizard.html do not use the same name for user and db
@@ -12,13 +13,15 @@ DB="nextcloud"
 export LC_ALL=C
 PASS=`head /dev/urandom | tr -dc A-Za-z0-9 | head -c 25`
 
-CFG=/root/plugin_config
 # Save the config values
+CFG=/root/plugin_config
 sysrc -f ${CFG} mysql_db="${DB}"
 sysrc -f ${CFG} mysql_user="${USER}"
 sysrc -f ${CFG} mysql_pass="${PASS}"
 
-# Round trip for proof of concept
+
+# Read MySQL Configuration
+CFG=/root/plugin_config
 DB=`sysrc -f ${CFG} -n mysql_db`
 USER=`sysrc -f ${CFG} -n mysql_user`
 PASS=`sysrc -f ${CFG} -n mysql_pass`
@@ -31,7 +34,4 @@ CREATE USER '${USER}'@'localhost' IDENTIFIED BY '${PASS}';
 GRANT ALL PRIVILEGES ON ${DB}.* TO '${USER}'@'localhost';
 FLUSH PRIVILEGES;
 EOF
-
-#rm -f /root/.mysql_secret
-
-service mysql-server restart
+rm -f /root/.mysql_secret

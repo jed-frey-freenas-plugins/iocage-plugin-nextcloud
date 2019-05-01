@@ -1,8 +1,9 @@
 #/bin/sh
-OLDHOST=`sysrc hostname | cut -f2 -d" "`
+OLDHOST=`sysrc -n hostname`
 HOST=`echo ${OLDHOST} | sed "s/_//"`
+DOMAIN=`grep search /etc/resolv.conf | awk '{ print $2 }'`
+
 sysrc hostname=${HOST}
 
 sed -i .bak "s/HOST/${HOST}/g" /etc/hosts
-
-echo "host:${HOST}" > /root/plugin_config
+sed -i .bak "s/DOMAIN/${DOMAIN}/g" /etc/hosts
