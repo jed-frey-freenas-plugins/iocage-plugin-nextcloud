@@ -1,7 +1,4 @@
 #!/bin/sh
-
-sysrc -f /etc/rc.conf php_fpm_enable="YES"
-
 cp /usr/local/etc/php.ini-production /usr/local/etc/php.ini
 # Modify opcache settings in php.ini according to Nextcloud documentation (remove comment and set recommended value)
 # https://docs.nextcloud.com/server/15/admin_manual/configuration_server/server_tuning.html#enable-php-opcache
@@ -18,5 +15,5 @@ sed -i '' 's/.*memory_limit.*/memory_limit=2048M/' /usr/local/etc/php.ini
 
 rm /usr/local/etc/php-fpm.d/www.conf*
 
-service php-fpm start 2>/dev/null
+service php-fpm start
 sleep 5
