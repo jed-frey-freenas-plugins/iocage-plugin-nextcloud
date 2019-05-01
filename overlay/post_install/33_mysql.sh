@@ -32,4 +32,6 @@ GRANT ALL PRIVILEGES ON ${DB}.* TO '${USER}'@'localhost';
 FLUSH PRIVILEGES;
 EOF
 
+rm -f /root/.mysql_secret
+
 service mysql-server restart

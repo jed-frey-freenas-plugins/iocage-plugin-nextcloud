@@ -15,8 +15,7 @@ sed -i '' 's/.*memory_limit.*/memory_limit=2048M/' /usr/local/etc/php.ini
 
 rm /usr/local/etc/php-fpm.d/www.conf*
 
+# PHP FPM has ... issues.
+while ["`pgrep -x php-fpm`" == ""]
 service php-fpm start
-sleep 5
-service php-fpm start            
-sleep 5
-
+end
