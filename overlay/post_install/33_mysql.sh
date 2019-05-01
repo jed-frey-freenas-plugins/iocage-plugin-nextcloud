@@ -24,7 +24,7 @@ USER=`sysrc -f ${CFG} -n mysql_user`
 PASS=`sysrc -f ${CFG} -n mysql_pass`
 
 # Configure mysql
-mysql -u root -p`tail -n1 /root/.mysql_secret` --socket=/var/run/mysql.sock --connect-expired-password <<-EOF
+mysql -u root -p`tail -n1 /root/.mysql_secret` --socket=/tmp/mysql.sock --connect-expired-password <<-EOF
 ALTER USER 'root'@'localhost' IDENTIFIED BY '${PASS}';
 CREATE DATABASE \`${DB}\` DEFAULT CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci';
 CREATE USER '${USER}'@'localhost' IDENTIFIED BY '${PASS}';
@@ -32,6 +32,6 @@ GRANT ALL PRIVILEGES ON ${DB}.* TO '${USER}'@'localhost';
 FLUSH PRIVILEGES;
 EOF
 
-rm -f /root/.mysql_secret
+#rm -f /root/.mysql_secret
 
 service mysql-server restart
