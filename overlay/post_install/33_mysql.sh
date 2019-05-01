@@ -18,7 +18,7 @@ DB="nextcloud"
 export LC_ALL=C
 PASS=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 20 | head -n 1`
 # Save the config values
-echo "dbname:${DB}" > /root/plugin_config
+echo "dbname:${DB}" >> /root/plugin_config
 echo "dbuser:${USER}" >> /root/plugin_config
 echo "dbpass:${PASS}" >> /root/plugin_config
 

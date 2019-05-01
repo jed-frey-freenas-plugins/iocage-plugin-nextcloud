@@ -6,4 +6,3 @@ sysrc hostname=${HOST}
 sed -i .bak "s/HOST/${HOST}/g" /etc/hosts
 
 echo "host:${HOST}" > /root/plugin_config
-
