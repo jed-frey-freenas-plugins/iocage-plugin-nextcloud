@@ -19,6 +19,7 @@ sed -i '' "s/MAX_SPARE_SERVERS/`sysctl -n kern.smp.cpus`/g" /usr/local/etc/php-f
 rm /usr/local/etc/php-fpm.d/www.conf*
 
 # PHP FPM has ... issues.
-while ["`pgrep -x php-fpm`" == ""]
+while [ "`pgrep -x php-fpm`" == "" ]
+do
 service php-fpm start
-end
+done

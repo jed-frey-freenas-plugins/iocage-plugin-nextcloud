@@ -9,13 +9,7 @@ NC_USER=`sysrc -f ${CFG} -n nextcloud_user`
 NC_PASS=`sysrc -f ${CFG} -n nextcloud_pass`
 
 /root/occ.sh maintenance:install \
-    --database=mysql \
-    --database-name="${DB}" \
-    --database-host="localhost:/tmp/mysql.sock" \
-    --database-user="${DB_USER}" \
-    --database-pass="${DB_PASS}" \
-    --admin-user="${NC_USER}" \
-    --admin-pass="${NC_PASS}"
+    --database=mysql --database-name="${DB}" --database-host="localhost:/tmp/mysql.sock" --database-user="${DB_USER}" --database-pass="${DB_PASS}" --admin-user="${NC_USER}" --admin-pass="${NC_PASS}"
 
 # Setup Trusted Hosts.
 HOST=`sysrc -n hostname`

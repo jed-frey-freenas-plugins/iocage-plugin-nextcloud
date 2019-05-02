@@ -1,10 +1,11 @@
 #!/bin/sh
 
 # Start the service
-# PHP FPM has ... issues.
-while ["`pgrep -x mysqld`" == ""]
+while [ "`pgrep -x mysqld`" == "" ]
+do
 service mysql-server start
-end
+done
+
 
 # MySQL Configuration
 # https://docs.nextcloud.com/server/13/admin_manual/installation/installation_wizard.html do not use the same name for user and db
