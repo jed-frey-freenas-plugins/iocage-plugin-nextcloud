@@ -12,7 +12,7 @@ NC_PASS=`sysrc -f ${CFG} -n nextcloud_pass`
     --database=mysql --database-name="${DB}" --database-host="localhost:/tmp/mysql.sock" --database-user="${DB_USER}" --database-pass="${DB_PASS}" --admin-user="${NC_USER}" --admin-pass="${NC_PASS}"
 
 # Setup Trusted Hosts.
-HOST=`sysrc -n hostname`
+HOST=`sysrc -n hostname | tr '[:upper:]' '[:lower:]'` 
 DOMAIN=`grep search /etc/resolv.conf | awk '{ print $2 }'`
 IP=`ifconfig epair0b | awk '/inet/ { print $2 }'`
 # By IP
