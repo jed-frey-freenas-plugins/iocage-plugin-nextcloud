@@ -8,7 +8,7 @@
             }
         ]
     },
-    "name": "Nextcloud",
+    "name": "nextcloud",
     "official": false,
     "packagesite": "http://pkg.FreeBSD.org/${ABI}/quarterly",
     "pkgs": [
